@@ -36,5 +36,5 @@
         </plugins>
     </build>
     <name>Tower constructor.</name>
-    <description>A user interface that visualize buildings' apartments</description>
+    <description>A user interface that visualize buildings' apartments and it's tenants info if occupied, pluss the contract</description>
 </project>

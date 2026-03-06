@@ -9,8 +9,8 @@ package launch;
  * @author rash4
  */
 public class Towers {
-
     public static void main(String[] args) {
         System.out.println("Hello World!");
+        main.Container.g().initialize();
     }
 }
