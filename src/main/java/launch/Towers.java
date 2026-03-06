@@ -11,6 +11,7 @@ package launch;
 public class Towers {
     public static void main(String[] args) {
         System.out.println("Hello World!");
-        main.Container.g().initialize();
+        mats.Mages.m().initializePerOrder();
+        main.Container.g().initializePerOrder();
     }
 }

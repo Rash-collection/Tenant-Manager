@@ -6,6 +6,7 @@
 package main;
 
 import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 
 /**
  *
@@ -14,9 +15,9 @@ import java.awt.Graphics2D;
 public final class Channels {
     private Channels(){}
     
-    public static void repaint(){}
+    public static void repaint(){Container.GUI.panel.repaint();}
     public static void render(Graphics2D grr){
-        
+        grr.drawImage(test, 12, 12, null);
     }
     public static void update(){
         
@@ -26,5 +27,10 @@ public final class Channels {
     }
     public static void scale(){
         
+    }
+    
+    private static BufferedImage test;
+    static {
+        test = mats.Mages.m().getImage(0);
     }
 }

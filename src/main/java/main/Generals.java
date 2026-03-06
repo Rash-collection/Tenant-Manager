@@ -11,5 +11,5 @@ package main;
  */
 public final class Generals {
     private Generals(){}
-    
+    public final static int SQR = 64;
 }
