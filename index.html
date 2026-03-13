@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Residential Tower Project - Structure Revision</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 2rem;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        code {
+            background-color: #eee;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        pre {
+            background-color: #eee;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        ul {
+            margin: 0.5rem 0 1rem 1.5rem;
+        }
+        table {
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        th, td {
+            border: 1px solid #aaa;
+            padding: 6px 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Residential Tower Project - Structure Revision</h1>
+
+    <p>Quick revision of the main nodes and their relationships before coding:</p>
+
+    <h2>🏢 Tower → Floor → Apartment → Contract → Rules</h2>
+
+    <h3>1️⃣ Tower</h3>
+    <ul>
+        <li><strong>Direct info:</strong> name, number of floors, apartments per floor (optional)</li>
+        <li><strong>Calculated/total info:</strong> total apartments, total population, total rent, total bills/services (only for included services)</li>
+        <li>Acts as the <em>container/manager</em> of all floors</li>
+    </ul>
+
+    <h3>2️⃣ Floor</h3>
+    <ul>
+        <li><strong>Direct info:</strong> number, type (GROUND, NORMAL, TOP, UNDERGROUND), height, dimensions (width × length)</li>
+        <li><strong>Calculated/total info:</strong> population, rent, apartment stats, bills/services (only included)</li>
+        <li>Groups apartments and makes calculations easier</li>
+    </ul>
+
+    <h3>3️⃣ Apartment</h3>
+    <ul>
+        <li><strong>Direct info:</strong> coordinates/ID, size (width × length × height), maxHousehold, current household size</li>
+        <li><strong>Status info:</strong> AVAILABLE, RENTED, UNAVAILABLE</li>
+        <li><strong>Contract history:</strong> may exist or not; apartment itself stays the same</li>
+        <li>Represents the <em>physical unit</em>; status changes but apartment persists</li>
+    </ul>
+
+    <h3>4️⃣ Contract</h3>
+    <ul>
+        <li><strong>Tenant info:</strong> name, start/end dates</li>
+        <li><strong>Lease info:</strong> rent (monthly/yearly), included services, max household, penalties for extra people</li>
+        <li><strong>Rules:</strong> embedded in contract – what’s allowed, billed, included</li>
+        <li>Each new contract is created when apartment is leased/renewed; enforces the rules</li>
+    </ul>
+
+    <h3>5️⃣ Rules</h3>
+    <ul>
+        <li>Could be embedded in the contract</li>
+        <li>Examples: max household, service inclusion, fines, renewal rules</li>
+        <li>No separate object needed unless reusable templates are desired</li>
+    </ul>
+
+    <h3>⚡ Key Ideas</h3>
+    <ul>
+        <li><code>Apartment ≈ fixed physical unit</code></li>
+        <li><code>Contract ≈ dynamic occupancy & rules</code></li>
+        <li>Totals are always calculated live from apartment status + contracts</li>
+        <li>Services included vs. tenant-paid changes whether it counts toward landlord totals</li>
+        <li>Contracts create the business logic: occupancy limits, fines, included services</li>
+    </ul>
+
+    <h3>Structure Diagram (Conceptual)</h3>
+    <pre>
+Tower
+ └─ Floors
+      └─ Apartments
+           └─ Current Contract
+                └─ Rules / limitations
+    </pre>
+
+    <p>Notes:</p>
+    <ul>
+        <li>Each apartment exists before and after contracts; contracts come and go.</li>
+        <li>Tower queries all floors/apartments/contracts for totals.</li>
+        <li>This hierarchy allows clear separation of physical units vs dynamic lease/rules.</li>
+    </ul>
+
+    <p>✅ This revision serves as a reference for coding the project, ensuring consistency and clarity.</p>
+</body>
+</html>
