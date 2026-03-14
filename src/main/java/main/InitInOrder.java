@@ -10,7 +10,7 @@ package main;
  */
 @FunctionalInterface
 public interface InitInOrder extends Initializer{
-    default void initializePerOrder(){
+    default void initializing(){
         javax.swing.SwingUtilities.invokeLater(this::initialize);
     }
 }
