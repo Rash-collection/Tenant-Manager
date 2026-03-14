@@ -11,7 +11,6 @@ import java.lang.annotation.Target;
 
 /**
  * <p>Almost an all purpose annotation for a very short status description.</p>
- * <p><b>PS:</b> remember to ask <i>AI</i> about how to use it on the unusual targets XD</p>
  * @author rash4
  */
 @Target({ElementType.CONSTRUCTOR, ElementType.FIELD, ElementType.METHOD,
