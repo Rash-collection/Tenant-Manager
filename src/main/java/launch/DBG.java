@@ -7,7 +7,6 @@ package launch;
 
 import coms.Command;
 import coms.CommandTree;
-import javax.swing.JPanel;
 
 /**
  *
