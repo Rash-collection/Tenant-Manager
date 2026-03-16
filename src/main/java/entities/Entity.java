@@ -5,19 +5,14 @@
 
 package entities;
 
+import localUtils.Chainable;
+
 /**
  * <p>The Root class of all entity object, no behavior here.</p>
  * @author rash4
  */
-public class Entity <T extends Entity<T>>{
+public class Entity <T extends Entity<T>> implements Chainable<T>{
     public Entity(){}
     
-    /**
-     * <p>Self-Cast</p>
-     * @return      object of the declared {@code (T)} subclass-type.
-     */
-    @SuppressWarnings("unchecked")
-    protected final T self(){
-        return (T)this;
-    }
+    
 }
